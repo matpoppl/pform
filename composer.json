@@ -1,0 +1,23 @@
+{
+	"name" : "matpoppl/pform",
+	"description" : "PHP form renderer",
+	"type" : "library",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "matpoppl",
+			"email" : "matpop@interpc.pl"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"pform\\" : [
+				"src/",
+				"tests/"
+			]
+		}
+	},
+	"minimum-stability" : "dev",
+	"require-dev" : {
+		"phpunit/phpunit" : "6"
+	}
+}
