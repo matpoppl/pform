@@ -46,6 +46,9 @@ class MultiInput extends AMultiElement
         
         switch ($this->type) {
             case 'radio':
+                $opts['value'] = $key;
+                $opts['checked'] = $key === $this->getValue();
+                break;
             case 'checkbox':
                 $opts['value'] = $key;
                 $opts['checked'] = null !== $this->getMultiValue($key);

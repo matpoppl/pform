@@ -8,7 +8,7 @@ class HtmlElementTest extends TestCase
 {
     public function testEscape()
     {
-        self::assertEquals(HtmlElement::escape('<script src="foo&foo">'), '&lt;script src=&quot;foo&amp;foo&quot;&gt;');
+        self::assertEquals('&lt;script src=&quot;foo&amp;foo&quot;&gt;', HtmlElement::escape('<script src="foo&foo">'));
     }
     
     public function testRenderAttrs()
@@ -31,6 +31,6 @@ class HtmlElementTest extends TestCase
             ),
         );
         
-        self::assertEquals(HtmlElement::renderAttrs($attrs), ' bool="" string="foo bar" zero="0" object="{&quot;foo&quot;:1,&quot;bar&quot;:2}" array="foo bar"');
+        self::assertEquals(' bool="" string="foo bar" zero="0" object="{&quot;foo&quot;:1,&quot;bar&quot;:2}" array="foo bar"', HtmlElement::renderAttrs($attrs));
     }
 }
