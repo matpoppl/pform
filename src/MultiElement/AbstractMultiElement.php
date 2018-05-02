@@ -9,9 +9,9 @@
  */
 namespace pform\MultiElement;
 
-use pform\Element\ALabeledElement;
+use pform\Element\AbstractLabeledElement;
 
-abstract class AMultiElement extends ALabeledElement implements IMultiElement, \Iterator, \Countable
+abstract class AbstractMultiElement extends AbstractLabeledElement implements MultiElementInterface, \Iterator, \Countable
 {
 
     protected $separator;
@@ -133,7 +133,7 @@ abstract class AMultiElement extends ALabeledElement implements IMultiElement, \
 
     public function next()
     {
-        $this->iterPointer ++;
+        $this->iterPointer++;
     }
     
     public function count()

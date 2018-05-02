@@ -10,7 +10,7 @@
 
 namespace pform\Element;
 
-abstract class ALabeledElement extends AElement
+abstract class AbstractLabeledElement extends AbstractElement
 {
     /**
      * 

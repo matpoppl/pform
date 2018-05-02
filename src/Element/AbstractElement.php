@@ -12,7 +12,7 @@ namespace pform\Element;
 
 use pform\Core\HtmlElement;
 
-abstract class AElement extends HtmlElement implements IElement
+abstract class AbstractElement extends HtmlElement implements ElementInterface
 {
     protected $value;
 
@@ -23,7 +23,7 @@ abstract class AElement extends HtmlElement implements IElement
     /**
      *
      * @param string $error
-     * @return \pform\Element\AElement
+     * @return \pform\Element\AbstractElement
      */
     public function addError($error)
     {

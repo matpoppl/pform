@@ -8,4 +8,4 @@ trim_trailing_whitespace = true
 
 [*.php]
 indent_style = tab
-trim_trailing_whitespace = true
+tab_width = 4

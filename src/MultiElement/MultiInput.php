@@ -13,7 +13,7 @@ namespace pform\MultiElement;
 use pform\Element\Label;
 use pform\Element\Input;
 
-class MultiInput extends AMultiElement
+class MultiInput extends AbstractMultiElement
 {
     private $type;
 

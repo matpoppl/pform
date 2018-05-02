@@ -9,7 +9,7 @@
  */
 namespace pform\Element;
 
-class Button extends AElement
+class Button extends AbstractElement
 {
     private $label;
     private $type;

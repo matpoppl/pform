@@ -10,17 +10,17 @@
 namespace pform\Form;
 
 use pform\Core\HtmlElement;
-use pform\Element\IElement;
+use pform\Element\ElementInterface;
 
-abstract class AForm extends HtmlElement implements IElement
+abstract class AbstractForm extends HtmlElement implements ElementInterface
 {
     /**
      *
-     * @var IElement[]
+     * @var ElementInterface[]
      */
     private $elements = array();
     
-    private function resetIdName($name, IElement $element)
+    private function resetIdName($name, ElementInterface $element)
     {
         $id = $element->getId();
         
@@ -44,10 +44,10 @@ abstract class AForm extends HtmlElement implements IElement
     }
     
     /**
-     * @param IElement $element
+     * @param ElementInterface $element
      * @return \pform\Form\Form
      */
-    public function setElement(IElement $element)
+    public function setElement(ElementInterface $element)
     {
         $name = $element->getName();
         

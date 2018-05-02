@@ -9,7 +9,7 @@
  */
 namespace pform\Form;
 
-class SubForm extends AForm
+class SubForm extends AbstractForm
 {
     public function render()
     {

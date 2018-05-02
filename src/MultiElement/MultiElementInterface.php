@@ -10,7 +10,7 @@
 
 namespace pform\MultiElement;
 
-interface IMultiElement
+interface MultiElementInterface
 {
     public function getMultiOptions();
     

@@ -9,7 +9,7 @@
  */
 namespace pform\Element;
 
-interface IElement
+interface ElementInterface
 {
 
     public function getValue();

@@ -10,7 +10,7 @@
 
 namespace pform\Element;
 
-class Input extends ALabeledElement
+class Input extends AbstractLabeledElement
 {
     /**
      * Input type

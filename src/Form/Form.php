@@ -9,7 +9,7 @@
  */
 namespace pform\Form;
 
-class Form extends AForm
+class Form extends AbstractForm
 {
 
     const ENCTYPE_URLENCODED = 'application/x-www-form-urlencoded';
