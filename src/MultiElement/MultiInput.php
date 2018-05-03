@@ -34,7 +34,16 @@ class MultiInput extends AbstractMultiElement
 
         parent::__construct($name, $multiOptions, $opts);
     }
-
+    
+    public function getMultiValue($key)
+    {
+        if (! is_array($this->value)) {
+            throw new \UnexpectedValueException('Array type of Value required');
+        }
+        
+        return isset($this->value[$key]) ? $this->value[$key] : null;
+    }
+    
     public function renderPrepareOption($key)
     {
         $opts = array(

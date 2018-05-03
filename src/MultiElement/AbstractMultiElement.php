@@ -60,30 +60,26 @@ abstract class AbstractMultiElement extends AbstractLabeledElement implements Mu
         $this->separator = $separator;
         return $this;
     }
-
-    public function getMultiOptions()
-    {
-        return $this->multiOptions;
-    }
-
+    
     public function setMultiple($multiple)
     {
         $this->multiple = $multiple;
         return $this;
     }
-
+    
+    public function getMultiOptions()
+    {
+        return $this->multiOptions;
+    }
+    
+    public function getMultiKeys()
+    {
+        return array_keys($this->multiOptions);
+    }
+    
     public function getMultiLabel($key)
     {
         return isset($this->multiOptions[$key]) ? $this->multiOptions[$key] : null;
-    }
-
-    public function getMultiValue($key)
-    {
-        if (! is_array($this->value)) {
-            throw new \UnexpectedValueException('Array type of Value required');
-        }
-        
-        return isset($this->value[$key]) ? $this->value[$key] : null;
     }
 
     public function renderView()
