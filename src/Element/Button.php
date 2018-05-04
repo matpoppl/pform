@@ -14,7 +14,7 @@ class Button extends AbstractElement
     private $label;
     private $type;
 
-    public function __construct($type, $name, array $options)
+    public function __construct($type, $name, array $options = null)
     {
         $this->type = $type;
         

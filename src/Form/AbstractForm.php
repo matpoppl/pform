@@ -22,11 +22,11 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
     
     private function resetIdName($name, ElementInterface $element)
     {
-        $id = $element->getId();
-        
+        $id = $element->getId() ?: $name;
+
         $element->setId($this->getId() . '-' . $id);
         $element->setName($this->getName() . '[' . $name . ']');
-       
+
         return $this;
     }
     
@@ -51,7 +51,9 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
     {
         $name = $element->getName();
         
-        $this->resetIdName($name, $element);
+        if (null !== $this->getParentNode()) {
+            $this->resetIdName($name, $element);
+        }
         
         if ($element instanceof HtmlElement) {
             $element->setParentNode($this);
