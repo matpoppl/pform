@@ -16,21 +16,14 @@ class Select extends AbstractMultiElement
 {
     protected $separator = '';
     
-    public function getMultiValue($key)
-    {
-        if (! is_array($this->value)) {
-            throw new \UnexpectedValueException('Array type of Value required');
-        }
-        
-        return in_array($key, $this->value) ? $key : null;
-    }
-    
     public function renderView()
     {
+        $isMultiple = $this->isMultiple();
+        
         $attrs = array(
             'id' => $this->getId(),
-            'name' => $this->getName(),
-            'multiple' => $this->isMultiple(),
+            'name' => $this->getName() . ($isMultiple ? '[]' : ''),
+            'multiple' => $isMultiple,
             'disabled' => ! $this->isWritable(),
         ) + $this->getAttrs();
         

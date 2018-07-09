@@ -14,7 +14,7 @@ use pform\Core\HtmlElement;
 
 abstract class AbstractElement extends HtmlElement implements ElementInterface
 {
-    protected $value;
+    protected $value = null;
 
     private $errors = array();
 
@@ -30,7 +30,13 @@ abstract class AbstractElement extends HtmlElement implements ElementInterface
         $this->errors[] = $error;
         return $this;
     }
-
+    
+    public function setErrors(array $errors)
+    {
+        $this->errors = $errors;
+        return $this;
+    }
+    
     public function getErrors()
     {
         return $this->errors;
@@ -57,7 +63,7 @@ abstract class AbstractElement extends HtmlElement implements ElementInterface
     
     public function renderErrors()
     {
-        return $this->errors ? '<ul class="form-erros"><li>' . implode('</li><li>', $this->errors) . '</li></ul>' : '';
+        return $this->errors ? '<ul class="form-errors"><li>' . implode('</li><li>', $this->errors) . '</li></ul>' : '';
     }
 
     public function render()

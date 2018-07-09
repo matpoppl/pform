@@ -24,7 +24,7 @@ class SelectTest extends TestCase
             . '<option value="cc">33</option>'
             . '</select>';
 
-        self::assertEquals($expected, $select->render());
+        self::assertXmlStringEqualsXmlString($expected, $select->render());
         
         self::assertEquals($value, $select->getValue());
     }
@@ -43,13 +43,13 @@ class SelectTest extends TestCase
         
         $select->setValue($value);
         
-        $expected = '<select id="foo" name="foo" multiple="">'
+        $expected = '<select id="foo" name="foo[]" multiple="">'
             . '<option value="aa" selected="">11</option>'
             . '<option value="bb">22</option>'
             . '<option value="cc" selected="">33</option>'
             . '</select>';
 
-        self::assertEquals($expected, $select->render());
+        self::assertXmlStringEqualsXmlString($expected, $select->render());
         
         self::assertEquals($value, $select->getValue());
     }

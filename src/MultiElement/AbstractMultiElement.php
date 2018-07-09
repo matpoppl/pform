@@ -28,7 +28,9 @@ abstract class AbstractMultiElement extends AbstractLabeledElement implements Mu
 
     public function __construct($name, array $multiOptions, array $options = null)
     {
-        $this->multiOptions = $multiOptions;
+        $this->multiOptions = array_map(function($row) {
+            return is_array($row) ? $row : array('label' => $row);
+        }, $multiOptions);
         
         parent::__construct($name, $options);
         
@@ -79,9 +81,22 @@ abstract class AbstractMultiElement extends AbstractLabeledElement implements Mu
     
     public function getMultiLabel($key)
     {
-        return isset($this->multiOptions[$key]) ? $this->multiOptions[$key] : null;
+        return isset($this->multiOptions[$key]) ? $this->multiOptions[$key]['label'] : null;
     }
-
+    
+    public function getMultiValue($key, $is = false)
+    {
+        if (! is_array($this->value)) {
+            throw new \UnexpectedValueException('Array type of Value required');
+        }
+        
+        if ($is) {
+            return isset($this->value[$key]) ? $this->value[$key] : null;
+        }
+        
+        return in_array($key, $this->value) ? $key : null;
+    }
+    
     public function renderView()
     {
         $ret = '';
@@ -134,6 +149,6 @@ abstract class AbstractMultiElement extends AbstractLabeledElement implements Mu
     
     public function count()
     {
-        return count($this->getMultiOptions());
+        return count($this->multiOptions);
     }
 }

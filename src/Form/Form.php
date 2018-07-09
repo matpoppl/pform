@@ -18,8 +18,8 @@ class Form extends AbstractForm
 
     const ENCTYPE_PLAIN = 'text/plain';
 
-    private $enctype = self::ENCTYPE_URLENCODED;
-
+    private $enctype;
+    
     /**
      *
      * @return string

@@ -16,14 +16,16 @@ interface ElementInterface
 
     public function getErrors();
 
+    public function setErrors(array $errors);
+
     public function getId();
-    
+
     public function setId($id);
-    
+
     public function getName();
-    
+
     public function setName($name);
-    
+
     public function addError($msg);
 
     public function isWritable();

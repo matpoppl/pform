@@ -14,6 +14,7 @@ use pform\Element\ElementInterface;
 
 abstract class AbstractForm extends HtmlElement implements ElementInterface
 {
+    
     /**
      *
      * @var ElementInterface[]
@@ -88,7 +89,7 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
      *            Set only values that exists. Don't overwrite with NULL.
      * @return \pform\Form\Form
      */
-    public function setValues(array $values, $skipNotSet = false)
+    private function setValues(array $values, $skipNotSet = false)
     {
         foreach ($this->elements as $name => $elem) {
             $value = isset($values[$name]) ? $values[$name] : null;
@@ -112,7 +113,9 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
             throw new \UnexpectedValueException('Value of Array type required');
         }
         
-        return $this->setValues($values);
+        $name = $this->getName();
+        
+        return $this->setValues(isset($values[$name]) ? $values[$name] : $values);
     }
     
     public function render()
@@ -139,10 +142,26 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
         $ret = array();
         
         foreach ($this->elements as $name => $elem) {
-            $ret[$name] = $elem->getValue();
+            if ($elem->isWritable()) {
+                $ret[$name] = $elem->getValue();
+            }
         }
         
         return $ret;
+    }
+    
+    public function setErrors(array $errors)
+    {
+        foreach (array_intersect_key($this->elements, $errors) as $key => $elem) {
+            $msgs = is_array($errors[$key]) ? $errors[$key] : array($errors[$key]);
+            
+            $elem->setErrors($msgs);
+            unset($errors[$key]);
+        }
+        
+        $this->errors = $errors;
+        
+        return $this;
     }
     
     public function addError($msg)

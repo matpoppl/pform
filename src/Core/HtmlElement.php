@@ -173,9 +173,7 @@ abstract class HtmlElement
                     }
                     break;
                 default:
-                    if ('' !== $val) {
-                        $ret .= ' ' . self::escape($key) . '="' . self::escape($val) . '"';
-                    }
+                    $ret .= ' ' . self::escape($key) . '="' . self::escape($val) . '"';
             }
         }
         

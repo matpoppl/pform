@@ -17,7 +17,7 @@ class HtmlElementTest extends TestCase
             'bool' => true,
             'boolIgnored' => false,
             'nullIgnored' => null,
-            'stringIgnored' => '',
+            'stringEmpty' => '',
             'string' => 'foo bar',
             'zero' => 0,
             'object' => (object) array(
@@ -31,6 +31,6 @@ class HtmlElementTest extends TestCase
             ),
         );
         
-        self::assertEquals(' bool="" string="foo bar" zero="0" object="{&quot;foo&quot;:1,&quot;bar&quot;:2}" array="foo bar"', HtmlElement::renderAttrs($attrs));
+        self::assertEquals(' bool="" stringEmpty="" string="foo bar" zero="0" object="{&quot;foo&quot;:1,&quot;bar&quot;:2}" array="foo bar"', HtmlElement::renderAttrs($attrs));
     }
 }
