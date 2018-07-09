@@ -23,11 +23,11 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
     
     private function resetIdName($name, ElementInterface $element)
     {
-        $id = $element->getId();
-        
+        $id = $element->getId() ?: $name;
+
         $element->setId($this->getId() . '-' . $id);
         $element->setName($this->getName() . '[' . $name . ']');
-       
+
         return $this;
     }
     
@@ -46,13 +46,15 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
     
     /**
      * @param ElementInterface $element
-     * @return \pform\Form\Form
+     * @return \pform\Form\AbstractForm
      */
     public function setElement(ElementInterface $element)
     {
         $name = $element->getName();
         
-        $this->resetIdName($name, $element);
+        if (null !== $this->getParentNode()) {
+            $this->resetIdName($name, $element);
+        }
         
         if ($element instanceof HtmlElement) {
             $element->setParentNode($this);
@@ -87,7 +89,7 @@ abstract class AbstractForm extends HtmlElement implements ElementInterface
      * @param array $values
      * @param boolean $skipNotSet
      *            Set only values that exists. Don't overwrite with NULL.
-     * @return \pform\Form\Form
+     * @return \pform\Form\AbstractForm
      */
     private function setValues(array $values, $skipNotSet = false)
     {

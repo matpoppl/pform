@@ -14,7 +14,7 @@ class Button extends AbstractElement
     private $label;
     private $type;
 
-    public function __construct($type, $name, array $options)
+    public function __construct($type, $name, array $options = null)
     {
         $this->type = $type;
         
@@ -49,7 +49,6 @@ class Button extends AbstractElement
             'type' => $this->getType(),
             'id' => $this->getId(),
             'name' => $this->getName(),
-            
             'value' => $this->getValue(),
         ) + $this->getAttrs();
         

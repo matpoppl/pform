@@ -2,8 +2,10 @@
 	"name" : "matpoppl/pform",
 	"type" : "library",
 	"description" : "PHP form renderer",
-	"keywords": ["form"],
-	"version": "0.0.1-alpha1",
+	"keywords" : [
+		"form"
+	],
+	"version" : "0.0.1-alpha2",
 	"license" : "MIT",
 	"authors" : [{
 			"name" : "matpoppl",

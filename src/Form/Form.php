@@ -19,7 +19,12 @@ class Form extends AbstractForm
     const ENCTYPE_PLAIN = 'text/plain';
 
     private $enctype;
-    
+
+    public function __construct(array $options = null)
+    {
+        parent::__construct(null, $options);
+    }
+
     /**
      *
      * @return string
@@ -38,16 +43,18 @@ class Form extends AbstractForm
         $this->enctype = $enctype;
         return $this;
     }
-    
-    public function render()
+
+    public function getFormAttrs()
     {
-        $attrs = array(
+        return array(
             'id' => $this->getId(),
             'name' => $this->getName(),
             'enctype' => $this->getEnctype()
         ) + $this->getAttrs();
-        
-        
-        return '<form' . self::renderAttrs($attrs) . '>' . parent::render() . '</form>';
+    }
+
+    public function render()
+    {
+        return '<form' . self::renderAttrs($this->getFormAttrs()) . '>' . parent::render() . '</form>';
     }
 }
